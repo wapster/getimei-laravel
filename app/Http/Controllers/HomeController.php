@@ -9,6 +9,12 @@ class HomeController extends Controller
     
     public function index() {
 
-        return view('home');
+        return view('layouts.home');
+    }
+
+
+    public function tac() {
+
+        return view('layouts.tac');
     }
 }
