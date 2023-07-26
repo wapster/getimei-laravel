@@ -21,8 +21,6 @@
 <link rel="mask-icon" href="/docs/5.3/assets/img/favicons/safari-pinned-tab.svg" color="#712cf9">
 <link rel="icon" href="/docs/5.3/assets/img/favicons/favicon.ico"> -->
 <meta name="theme-color" content="#712cf9">
-
-   
     <!-- Custom styles for this template -->
     <link href="/css/sign-in.css" rel="stylesheet">
   </head>
@@ -79,20 +77,28 @@
     </div>
 
     <main class="form-signin w-100 m-auto">
-  <div>
-    <h3><a href="{{ route('home') }}">GetIMEI.ru</a></h3>
+      <div>
+        <h3><a href="{{ route('home') }}">GetIMEI.ru</a></h3>
+        @include('layouts.errors')
   </div>
   <hr>
-  <form>
+  <form class="form-horizontal contact-form" role="form" method="post" action="/register">
+  {{csrf_field()}}
     <!-- <img class="mb-4" src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
     <h1 class="h3 mb-3 fw-normal">Регистрация</h1>
 
     <div class="form-floating">
-      <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+      <input type="text" class="form-control" id="floatingInput" name="name" value="{{old('name')}}">
+      <label for="floatingInput">Имя</label>
+    </div>
+
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" name="email" value="{{old('email')}}">
       <label for="floatingInput">Email</label>
     </div>
+
     <div class="form-floating">
-      <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+      <input type="password" class="form-control" id="floatingPassword" name="password">
       <label for="floatingPassword">Пароль</label>
     </div>
 
