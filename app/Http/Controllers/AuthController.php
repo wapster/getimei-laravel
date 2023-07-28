@@ -26,12 +26,12 @@ class AuthController extends Controller
         $user = User::add($request->all());
     	$user->generatePassword($request->get('password'));
 
-    	return redirect('/');
+    	return redirect('/login');
     }
 
     public function loginForm()
     {
-    	return view('pages.login');
+    	return view('layouts.login');
     }
 
 	public function login(Request $request)
@@ -50,6 +50,13 @@ class AuthController extends Controller
     	}
 
     	return redirect()->back()->with('status', 'Неправильный логин или пароль');
+    }
+
+
+    public function logout()
+    {
+    	Auth::logout();
+    	return redirect('/login');
     }
     
 }
